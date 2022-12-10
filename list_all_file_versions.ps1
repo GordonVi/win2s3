@@ -36,7 +36,7 @@
 
 .EXAMPLE
 
-Run the PS1 script. Ir doesn't request prompts.
+Run the PS1 script. It doesn't request prompts. It can be scheduled.
 
 #>
 
