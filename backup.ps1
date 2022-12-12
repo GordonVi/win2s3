@@ -38,6 +38,7 @@
   This pushes data with the AWS CLI into an S3 Bucket
   This requires you to set up the AWS CLI, your account, a user account, connection keys, an S3 Bucket (version enabled), and the IAM Permissions for S3 access > Role > Add said role to user.
   This requires you to type in "aws configure" in the command line and link your access key/secret to your AWS CLI.
+  This script requires a folder named "c:\temp\win2s3" to be created and to have Full Access. This is where the script stages the meta data before upload.
   
 .OUTPUTS
   The output is getting your data into S3
