@@ -1,5 +1,5 @@
-$target = "C:\Users\gordon\Desktop" #\powershell\files"
-$bucket_prefix="novermber2022demo"
+$target = "C:\Users\gordon\Desktop\docker" #\powershell\files"
+$bucket_prefix="november2022demo"
 $bucketname = "$bucket_prefix".ToLower()
 $local_temp_folder = "c:\temp\win2s3"
 
@@ -43,5 +43,6 @@ icacls "$target" /save "$local_temp_folder\icacls.txt" /t /c
 
 aws s3 sync "$target" "s3://$bucketname/files/$target_bucket_subfolder_name/" --delete
 
-aws s3api list-objects-v2 --bucket mtha-acronis --profile acronis --prefix "s3://$bucketname/files/$target_bucket_subfolder_name/" --output json > "$local_temp_folder\s3api_file_list.json"
+aws s3api list-objects-v2 --bucket $bucketname --prefix "files/$target_bucket_subfolder_name" --output json > "$local_temp_folder\s3api_file_list.json"
 aws s3 sync "$local_temp_folder" "s3://$bucketname/metadata/$target_bucket_subfolder_name/" --delete
+
