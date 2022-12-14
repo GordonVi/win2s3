@@ -56,19 +56,21 @@ Run the PS1 script. It doesn't request prompts. It can be scheduled.
 
 # --------------------------------
 
-$target = "C:\Users\gordon\Desktop"
-$bucket_prefix="november2022demo"
-$bucketname = "$bucket_prefix".ToLower()
-$local_temp_folder = "c:\temp\win2s3"
+$target = "C:\Users\gordon\Desktop" # This is the folder you are sending to S3
+$bucketname = "your-version-enabled-bucket".ToLower() # bucket names are lowercase. AWS rules
+$local_temp_folder = "c:\temp\win2s3" # Needed to write metadata
 
 # --------------------------------
 
 $target_bucket_subfolder_name = $target.replace("\","/").replace(":","")
 
+# make the temp folder, this temp folder stages the meta data files
+# https://stackoverflow.com/questions/16906170/create-directory-if-it-does-not-exist
+md -Force c:\temp\win2s3 | out-null
 
 # Write Meta Files in local temp folder
 aws s3 sync "$target" "s3://$bucketname/files/$target_bucket_subfolder_name/" --delete --dryrun > "$local_temp_folder\aws_s3_dryrun.txt"
-icacls "$target" /save "$local_temp_folder\icacls.txt" /t /c
+icacls "$target" /save "$local_temp_folder\icacls.txt" /t /c | out-null
 
 # generate a list of files and folders from powershell
 # this is how we know what empty directories exist and to recreate.
@@ -99,8 +101,11 @@ icacls "$target" /save "$local_temp_folder\icacls.txt" /t /c
 # --------------------------------
 
 
-aws s3 sync "$target" "s3://$bucketname/files/$target_bucket_subfolder_name/" --delete
+aws s3 sync "$target" "s3://$bucketname/files/$target_bucket_subfolder_name/" --delete  | out-null
 
 aws s3api list-objects-v2 --bucket $bucketname --prefix "files/$target_bucket_subfolder_name" --output json > "$local_temp_folder\s3api_file_list.json"
-aws s3 sync "$local_temp_folder" "s3://$bucketname/metadata/$target_bucket_subfolder_name/" --delete
+aws s3 sync "$local_temp_folder" "s3://$bucketname/metadata/$target_bucket_subfolder_name/" --delete  | out-null
 
+# remove the temp folder
+# https://stackoverflow.com/questions/7909167/how-to-quietly-remove-a-directory-with-content-in-powershell
+rm c:\temp\win2s3 -r -force  | out-null
