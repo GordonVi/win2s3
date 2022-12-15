@@ -1,9 +1,9 @@
 clear
 
 	$bucket = "november2022demo" # must be lowercase, AWS rules
-	$folder = "C/Users/gordon/Desktop" # Case Sensitive
+	$folder = "C/Users/Gordon/Desktop/powershell/aws" # Case Sensitive
 	$restore_target = "C:\temp\restore" # this is where you are dumping the restore data
-	$point_in_time_restore_date = "2022-12-14T16:24:59+00:00"
+	$point_in_time_restore_date = "2022-12-15T01:21:47+00:00"
 
 # ------------
 # Check if this logged in user is an admin. If not, exit.
@@ -125,7 +125,7 @@ clear
 		
 		
 		if ($temp -ne $file_to_write_dir) {
-			"md $file_to_write_dir -ErrorAction SilentlyContinue | out-null"
+			"md `"$file_to_write_dir`" -ErrorAction SilentlyContinue | out-null"
 		}
 		
 
