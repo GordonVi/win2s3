@@ -1,7 +1,7 @@
 clear
 
-	$bucket = "your-version-enabled-bucket" # must be lowercase, AWS rules
-	$folder = "C/Users/gordon/Desktop" # the mount point of the restore, this requires a spot with versioned metadata
+	$bucket = "november2022demo" # must be lowercase, AWS rules
+	$folder = "C/Users/gordon/Desktop" # Case Sensitive
 	$restore_target = "C:\temp\restore" # this is where you are dumping the restore data
 	$point_in_time_restore_date = "2022-12-14T16:24:59+00:00"
 
@@ -49,7 +49,7 @@ clear
 
 
 	write-host -foregroundcolor cyan "
-	Getting the points in the disk that are restorable...
+	Restore Target..
 	"
 
 	$restore_target
@@ -67,7 +67,7 @@ clear
 	Getting the points in time of backup.
 	"
 
-	$version_list = aws s3api list-object-versions --bucket $bucket --prefix "metadata/$folder/s3api_file_list.json" | convertfrom-json
+	$version_list = aws s3api list-object-versions --bucket $bucket --prefix "metadata/$folder/s3api_file_list.json" --output json | convertfrom-json
 
 	# list of versions from selected core files. (The point in time to restore from)
 	$temp = $($version_list.versions).lastmodified | sort -descending
@@ -83,7 +83,7 @@ clear
 # ------------
 
 	# Pull a list of all versions of all files from AWS | convert from json into a powershell object
-	$list = aws s3api list-object-versions --bucket $bucket --prefix "files/$folder" | convertfrom-json
+	$list = aws s3api list-object-versions --bucket $bucket --prefix "files/$folder" --output json | convertfrom-json
 
 	  # If you want to do the while bucket, not a recursive subfolder. use this line without the --prefix property
 	  # $list = aws s3api list-object-versions --bucket $bucket | convertfrom-json
@@ -131,7 +131,7 @@ clear
 
 		$temp = $file_to_write_dir # this is a post process cache. Check if the value was the same as te last iteration.
 		
-		"aws s3api get-object --bucket $bucket --key `"$($item.key)`" --version-id $($item.versionId) `"$file_to_write`" | out-null"
+		"aws s3api get-object --bucket $bucket --key `"$($item.key)`" --version-id $($item.versionId) `"$file_to_write`" --output json | out-null"
 	}
 	
 	$counter=0
@@ -156,7 +156,7 @@ clear
 	write-host -foregroundcolor cyan "Find Metadata from s3 (File Permissions, Original Dates)" 
 
 	# Pull a list of all versions of all files from AWS | convert from json into a powershell object
-	$list = aws s3api list-object-versions --bucket $bucket --prefix "metadata/$folder" | convertfrom-json
+	$list = aws s3api list-object-versions --bucket $bucket --prefix "metadata/$folder" --output json | convertfrom-json
 
 	  # If you want to do the while bucket, not a recursive subfolder. use this line without the --prefix property
 	  # $list = aws s3api list-object-versions --bucket $bucket | convertfrom-json
@@ -197,7 +197,7 @@ clear
 
 		if ($restore_target -eq $file_to_write_dir){
 				# only restore the base directory, not recursive.
-				"aws s3api get-object --bucket $bucket --key `"$($item.key)`" --version-id $($item.versionId) `"$file_to_write`" | out-null"
+				"aws s3api get-object --bucket $bucket --key `"$($item.key)`" --version-id $($item.versionId) `"$file_to_write`" --output json | out-null"
 		}
 	}
 	
