@@ -110,18 +110,18 @@ _The "ListAllMyBuckets" permission is not a mistake. To find the right bucket, A
 
 - Sign up for AWS with a credit card at https://aws.amazon.com/resources/create-account/
 
-- Setup MFA (Multi Factor Authorization with Google Authenticator)
+- #### Setup MFA (Multi Factor Authorization with Google Authenticator)
 - Create a user
 - Create a Key / Secret for API access
 
-- Install AWS CLI on your Windows PC
+- #### Install AWS CLI on your Windows PC
 - Open Powershell
 - Type "aws configure"
 - Enter your key/secret
 
-- In AWS, go to the S3 Section
+- #### In AWS, go to the S3 Section
 - Create a bucket, make sure to enable versioning
 - Do not enable public viewing
 - I recommend having a common prefix for your backup buckets with 2 dashes. Like "win2s3--"
 
-- Now, you can run the script. It will see your bucket. Start with making your first backup.
+## Now, you can run the script. It will see your bucket. Start with making your first backup.
