@@ -12,7 +12,7 @@ Win2S3 is a collection of Powershell scripts to make backing up and restoring fi
 ## Features
 
 - Quick Backup using "AWS CLI s3 sync"
-- Backs up Windows File Permissions, Read Only attribute, and file dates
+- Backs up Windows File Permissions, Read Only attribute, Hidden Item flag, and file dates
 - Supports Point in Time Restore
 - No License, free to use for anything
 
@@ -55,3 +55,48 @@ Just 1 guy.
 None
 
 **Free Software, Hell Yeah!**
+
+## What should my IAM Permission look like for my buckets?
+
+In AWS > IAM > Policies.
+
+Click "Create Policy."
+Paste this JSON into the Permissions:
+
+Notice that I have a single bucket named "version-enabled-bucket" included. Also, all buckets that begin with the prefix "win2s3--" are included. This is how you control AWS to enforce what buckets have permissions. 
+
+The "ListAllMyBuckets" permission is not a mistake. In find the right bucket, AWS only allows you to see (but not read or write in) all buckets. This is an AWS thing.
+
+--------------------
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:DeleteObject",
+                "s3:DeleteBucketPolicy",
+                "s3:GetBucketLocation",
+                "s3:GetObject",
+                "s3:GetObjectAcl",
+                "s3:GetObjectVersion",
+                "s3:ListBucket",
+                "s3:ListBucketMultipartUploads",
+                "s3:PutObject",
+                "s3:PutObjectAcl"
+            ],
+            "Resource": [
+                "arn:aws:s3:::version-enabled-bucket",
+                "arn:aws:s3:::version-enabled-bucket/*",
+                "arn:aws:s3:::win2s3--*"
+            ],
+            "Condition": {}
+        },
+        {
+            "Effect": "Allow",
+            "Action": "s3:ListAllMyBuckets",
+            "Resource": "*"
+        }
+    ]
+}
