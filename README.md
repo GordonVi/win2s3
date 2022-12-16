@@ -65,11 +65,12 @@ In AWS > IAM > Policies.
 Click "Create Policy."
 Paste this JSON into the Permissions:
 
-Notice that I have a single bucket named "version-enabled-bucket" included. Also, all buckets that begin with the prefix "win2s3--" are included. This is how you control AWS to enforce what buckets have permissions. 
-
-The "ListAllMyBuckets" permission is not a mistake. In find the right bucket, AWS only allows you to see (but not read or write in) all buckets. This is an AWS thing.
-
 --------------------
+_Notice that I have a single bucket named "version-enabled-bucket" included. Also, all buckets that begin with the prefix "win2s3--" are included. This is how you control AWS to enforce what buckets have permissions._ 
+
+_The "ListAllMyBuckets" permission is not a mistake. In find the right bucket, AWS only allows you to see (but not read or write in) all buckets. This is an AWS thing._
+--------------------
+
 ```
 {
     "Version": "2012-10-17",
