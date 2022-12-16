@@ -114,8 +114,8 @@ _The "ListAllMyBuckets" permission is not a mistake. To find the right bucket, A
 - Create a user
 - Create a Key / Secret for API access
 
-- #### Create an IAM policy with the policy template from above
-- Attach that Policy to a Role
+- #### Create an IAM policy (permissions) with the policy template from above
+- Attach that Policy (permissions) to a Role
 - Attach that Role to a Group
 - Add your created user to that group OR attach the policy to your User
 
