@@ -1,6 +1,14 @@
+
+# Menu Radio Button Function
+
+. .\menu.ps1
+. .\restore-win2s3.ps1
+
 # ------------
 # Check if this logged in user is an admin. If not, exit.
 
+		clear
+		
 		$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
 		if (!$currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
 
@@ -32,11 +40,6 @@
 
 # ------------
 
-# Menu Radio Button Function
-
-. .\menu.ps1
-. .\restore-win2s3.ps1
-
 # Get Buckets
 $restore_target = "C:\temp\restore" # this is where you are dumping the restore data
 $fail_flag=0
@@ -50,7 +53,6 @@ if ($temp[0] -eq "yes") {
 
 	# Get Restore Points in bucket
 	$restore_point_list = $($(aws s3api list-objects --bucket $bucket --prefix "metadata" --output json | convertfrom-json).contents | where {$_.Key -match "s3api_file_list.json"}).key.replace("metadata/","").replace("/s3api_file_list.json","")
-	$restore_point_list
 	$list = $restore_point_list
 
 	$temp = menu("Restore-Win2S3: Select the file system restore point to restore from")

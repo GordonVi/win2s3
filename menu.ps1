@@ -5,12 +5,12 @@ function menu($title) {
 # ------------
 
 $radio=@()
-$kerning=17
+$kerning=27
 $kerning_temp=10
 $result=1
 
 $form_x = 600
-$form_y = 110 + ($list.count * $kerning)
+$form_y = 150 + ($list.count * $kerning)
 
 $form = New-Object System.Windows.Forms.Form
 $form.Text = $title

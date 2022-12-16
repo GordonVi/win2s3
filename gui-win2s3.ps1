@@ -1,3 +1,6 @@
+$host.UI.RawUI.WindowTitle = "Win2S3 Console"
+clear
+
 . .\menu.ps1
 
 $list = @("Backup to S3 Bucket","List Backup Contents","Restore a Backup")

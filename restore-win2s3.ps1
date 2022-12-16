@@ -6,6 +6,40 @@ function restore-win2s3($bucket,$folder,$restore_target,$point_in_time_restore_d
 	$folder_win_format = $folder.replace("/","\").insert(1,":")
 	
 # ------------
+# Check if this logged in user is an admin. If not, exit.
+
+		clear
+		
+		$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+		if (!$currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+
+			write-host -foregroundcolor yellow "
+
+	   Error: This user account " -nonewline
+
+			write-host -foregroundcolor white "($(type env:userdomain)\$(type env:username))" -nonewline
+			write-host -foregroundcolor yellow " is not an administrator."
+
+			"
+		  The User doing a restore must be an administrator.  
+	  
+		  This is required to set object ownership permissions with ICACLS.exe
+				  
+			"
+
+			write-host -foregroundcolor cyan "    Press Any Key to Exit this script...
+
+
+"
+
+			#pause
+			$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+			exit	
+	
+		}
+
+
+# ------------
 
 	# Pull a list of all versions of all files from AWS | convert from json into a powershell object
 	$list = aws s3api list-object-versions --bucket $bucket --prefix "files/$folder" --output json | convertfrom-json
