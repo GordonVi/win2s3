@@ -106,7 +106,7 @@ _The "ListAllMyBuckets" permission is not a mistake. To find the right bucket, A
 }
 ```
 
-#### Give me a quick list of how to setup AWS and this script from scratch
+# Give me a quick list of how to setup AWS and this script from scratch
 
 - Sign up for AWS with a credit card at https://aws.amazon.com/resources/create-account/
 
