@@ -11,8 +11,8 @@ Win2S3 is a collection of Powershell scripts to make backing up and restoring fi
 
 ## Features
 
-- Quick Backup using AWS CLI s3 sync
-- Backs up Windows File Permissions, Read Only attribte, and file dates
+- Quick Backup using "AWS CLI s3 sync"
+- Backs up Windows File Permissions, Read Only attribute, and file dates
 - Supports Point in Time Restore
 - No License, free to use for anything
 
