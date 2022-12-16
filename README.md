@@ -43,6 +43,8 @@ This requires the AWS CLI installed and configured.
 This mean:
 
 - Run "aws configure"
+- Make sure the attached account has permissions to your bucket
+- if you use a proxy, set your proxy using the SETX command in Powershell
 
 ## Development
 
