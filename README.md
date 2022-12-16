@@ -1,6 +1,7 @@
 # Win2S3
 ## _A Powershell frontend for AWS CLI_
 
+![win2s3](http://virasawmi.com/gordon/images/win2s3.jpg)
 
 Win2S3 is a collection of Powershell scripts to make backing up and restoring files to Windows easy
 
