@@ -8,11 +8,11 @@ function restore-win2s3($bucket,$folder,$restore_target,$point_in_time_restore_d
 # ------------
 # Check if this logged in user is an admin. If not, exit.
 
-		clear
 		
 		$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
 		if (!$currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-
+			clear
+		
 			write-host -foregroundcolor yellow "
 
 	   Error: This user account " -nonewline
@@ -66,16 +66,16 @@ function restore-win2s3($bucket,$folder,$restore_target,$point_in_time_restore_d
 		
 		$combined_temp | ? {$_.key -eq $item.key} | sort LastModified -descending | select-object -first 1
 	}
+	
 
 	# make a graph showing the new formatted table
 	# $combined | out-gridview
 
 # ------------
 
-
 	write-host -foregroundcolor cyan "Find Files from S3" 
 
-	$restore_commands = foreach ($item in $($combined | sort key)) {
+	$restore_commands = foreach ($item in $($combined | sort key | ? {$_.deletemarker -eq 0})) {
 		
 		# Note that the base folder is here. 
 		$counter=0
@@ -83,16 +83,20 @@ function restore-win2s3($bucket,$folder,$restore_target,$point_in_time_restore_d
 		$file_to_write_dir = Split-Path -Path $file_to_write
 		
 		
-		if ($temp -ne $file_to_write_dir) {
-			"md `"$file_to_write_dir`" -ErrorAction SilentlyContinue | out-null"
-		}
-		
 
-		$temp = $file_to_write_dir # this is a post process cache. Check if the value was the same as te last iteration.
+			if ($temp -ne $file_to_write_dir) {
+				"md `"$file_to_write_dir`" -ErrorAction SilentlyContinue | out-null"
+				$temp = $file_to_write_dir # this is a post process cache. Check if the value was the same as te last iteration.
+
+			}
+				
+
+			"aws s3api get-object --bucket $bucket --key `"$($item.key)`" --version-id $($item.versionId) `"$file_to_write`" --output json | out-null"
+
 		
-		"aws s3api get-object --bucket $bucket --key `"$($item.key)`" --version-id $($item.versionId) `"$file_to_write`" --output json | out-null"
 	}
-	
+
+		
 	$counter=0
 	$total = $restore_commands.count
 	
@@ -186,6 +190,7 @@ function restore-win2s3($bucket,$folder,$restore_target,$point_in_time_restore_d
  foreach ($item in $list) {
 
 	 $FullName = $item.FullName.replace($folder_win_format,"$restore_target\$base_folder")
+
 	 
 	if (Test-Path -Path $FullName -PathType Leaf) {
 		 
@@ -198,6 +203,9 @@ function restore-win2s3($bucket,$folder,$restore_target,$point_in_time_restore_d
 	
 	# this makes the blank folders that were stored in the metadata but not in s3
 	if ($item.recurse_file_count -eq 0) {md $FullName | out-null}
+
+	# sets hidden flag on files and folders
+	if ($($item.mode)[3] -eq "h") {(get-item $FullName).Attributes += 'Hidden'}
 
 	}
 

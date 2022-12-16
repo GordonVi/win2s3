@@ -14,7 +14,7 @@ function backup-win2s3($bucket,$target,$local_temp_folder) {
 	# this is how we know what empty directories exist and to recreate.
 	# --------------------------------
 
-		$list = $(gci $target -recurse) | select name, PSIsContainer, length, CreationTimeUTC, LastWriteTimeUTC, isreadonly, directoryname, fullname
+		$list = $(gci $target -recurse -force) | select name, PSIsContainer, mode, length, CreationTimeUTC, LastWriteTimeUTC, isreadonly, directoryname, fullname
 
 	# ---
 
