@@ -107,6 +107,7 @@ The "ListAllMyBuckets" permission is not a mistake. In find the right bucket, AW
 #### Give me a quick list of how to setup AWS and this script from scratch
 
 Sign up for AWS with a credit card at https://aws.amazon.com/resources/create-account/
+
 Setup MFA (Multi Factor Authorization with Google Authenticator)
 Create a user
 Create a Key / Secret for API access
