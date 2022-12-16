@@ -16,9 +16,7 @@ Win2S3 is a collection of Powershell scripts to make backing up and restoring fi
 - Supports Point in Time Restore
 - No License, free to use for anything
 
-Markdown is a lightweight markup language based on the formatting conventions
-that people naturally use in email.
-As [John Gruber] writes on the [Markdown site][df1]
+## The Koan that got me to make this
 
 _ChatGPT writes a koan about s3 backup and a lack of good backup clients for windows_
 
