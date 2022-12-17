@@ -66,6 +66,7 @@ None
 - _Highly Recommended. Set up "AWS Budgets"_
 
 - #### Create a user
+- _Highly Recommended to name the user something like "service-win2s3"_
 - Create a Key / Secret for API access
 
 - #### In AWS, go to the S3 Section
