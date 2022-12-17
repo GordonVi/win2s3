@@ -144,6 +144,6 @@ aws s3 ls
 
 - #### Copy the script files to a folder into your computer
 - Right click and run "gui-win2s3.ps1"
-- To restore, you need to run powershell as an admin, then run "gui_win2s3.ps1"
+- To restore, you need to run powershell as an admin, then run "gui_win2s3.ps1" from the command line
 
 ## Now, you can run the script. It will see your bucket. Start with making your first backup.
