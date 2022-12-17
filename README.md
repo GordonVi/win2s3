@@ -63,6 +63,7 @@ None
 
 - #### Sign up for AWS with a credit card at https://aws.amazon.com/resources/create-account/
 - Setup MFA (Multi Factor Authorization with Google Authenticator)
+- _Highly Recommended. Set up "AWS Budgets"_
 
 - #### Create a user
 - Create a Key / Secret for API access
