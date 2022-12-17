@@ -45,6 +45,11 @@ This mean:
 - Run "aws configure"
 - Make sure the attached account has permissions to your bucket
 - if you use a proxy, set your proxy using the SETX command in Powershell
+```
+SETX HTTP="http://proxy.fakecompany.com:3124"
+SETX HTTPS="http://proxy.fakecompany.com:3124"
+```
+
 
 ## Development
 
