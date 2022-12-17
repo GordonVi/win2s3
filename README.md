@@ -57,11 +57,26 @@ None
 
 **Free Software, Hell Yeah!**
 
-## What should my IAM Permission look like?
+
+
+# Give me a quick list of how to setup AWS S3 and this script from scratch
+
+- #### Sign up for AWS with a credit card at https://aws.amazon.com/resources/create-account/
+- Setup MFA (Multi Factor Authorization with Google Authenticator)
+
+- #### Create a user
+- Create a Key / Secret for API access
+
+- #### In AWS, go to the S3 Section
+- Create a bucket, make it a private bucket, make sure to enable versioning
+- Do not enable public viewing
+- I recommend having a common prefix for your backup buckets with 2 dashes. Like "win2s3--"
+
+- #### Create an IAM policy (permissions) with the policy template from above
 
 #### Create a policy
 
-In AWS > IAM > Policies.
+## In AWS > IAM > Policies.
 
 Click "Create Policy."
 Paste this JSON into the Permissions:
@@ -107,23 +122,9 @@ _The "ListAllMyBuckets" permission is not a mistake. To find the right bucket, A
 }
 ```
 
-# Give me a quick list of how to setup AWS S3 and this script from scratch
-
-- Sign up for AWS with a credit card at https://aws.amazon.com/resources/create-account/
-
-- #### Setup MFA (Multi Factor Authorization with Google Authenticator)
-- Create a user
-- Create a Key / Secret for API access
-
-- #### Create an IAM policy (permissions) with the policy template from above
 - Attach that Policy (permissions) to a Role
 - Attach that Role to a Group
 - Add your created user to that group OR attach the policy to your User
-
-- #### In AWS, go to the S3 Section
-- Create a bucket, make sure to enable versioning
-- Do not enable public viewing
-- I recommend having a common prefix for your backup buckets with 2 dashes. Like "win2s3--"
 
 - #### Install AWS CLI on your Windows PC
 - Open Powershell
