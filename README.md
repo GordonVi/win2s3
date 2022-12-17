@@ -137,5 +137,13 @@ _The "ListAllMyBuckets" permission is not a mistake. To find the right bucket, A
 - Open Powershell
 - Type "aws configure"
 - Enter your key/secret
+- Test if you can reach AWS by typing this into a powershell prompt:
+```
+aws s3 ls
+```
+
+- #### Copy the script files to a folder into your computer
+- Right click and run "gui-win2s3.ps1"
+- To restore, you need to run powershell as an admin, then run "gui_win2s3.ps1"
 
 ## Now, you can run the script. It will see your bucket. Start with making your first backup.
