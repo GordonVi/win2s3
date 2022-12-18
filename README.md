@@ -17,6 +17,7 @@ _Win2S3 operates in the same fashion as robocopy, rsync, and such. It's not a dr
 - Quick Backup using "AWS CLI s3 sync"
 - Backs up Windows File Permissions, Read Only attribute, Hidden Item flag, and file dates
 - Supports Point in Time Restore
+- Works though proxy / proxies like squid and McAfee Security through port 443. 
 - Works with folders:
 ```
 c:\Users\EndUser\Desktop
