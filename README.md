@@ -91,9 +91,13 @@ None
 - Create a Key / Secret for API access
 
 - #### In AWS, go to the S3 Section
-- Create a bucket, make it a private bucket, make sure to enable versioning
-- Do not enable public viewing
-- I recommend having a common prefix for your backup buckets with 2 dashes. Like "win2s3--"
+- Create a bucket
+_I recommend having a common prefix for your backup buckets with 2 dashes. Like "win2s3--"_
+- Disable ACLs
+- Block all public access
+- Enable Bucket Versioning
+- Disable encryption. (I haven't worked that into this script. It is possible to do)
+- Advanced > Object Lock. You should enable this. This prevents a hacker from deleting your data if they get onto your PC and steal your AWS key/secret.
 
 - #### Create an IAM policy (permissions) with the policy template from above
 
