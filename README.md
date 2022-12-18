@@ -91,7 +91,7 @@ None
 - Create a Key / Secret for API access
 
 - #### In AWS, go to the S3 Section
-- Create a bucket
+- Create a bucket. 
 _I recommend having a common prefix for your backup buckets with 2 dashes. Like "win2s3--"_
 - Disable ACLs
 - Block all public access
