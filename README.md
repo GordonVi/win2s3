@@ -18,13 +18,14 @@ _Win2S3 operates in the same fashion as robocopy, rsync, and such. It's not a dr
 - Backs up Windows File Permissions, Read Only attribute, Hidden Item flag, and file dates
 - Supports Point in Time Restore
 - Works though proxy / proxies like squid and McAfee Security through port 443. 
+- Command line commands can be used without the GUI. Great for Task Scheduler Jobs and adding into your own scripts.
+- No License, free to use for anything
 - Works with folders:
 ```
 c:\Users\EndUser\Desktop
 c:\Users\EndUser\Pictures
 c:\Users\EndUser\Downloads
 ```
-- No License, free to use for anything
 
 ## Limits
 - Will not work with folders like:
