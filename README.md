@@ -1,5 +1,5 @@
 # Win2S3
-## _A Powershell frontend for AWS CLI_
+## _A Powershell frontend for backup and restore to S3 using the AWS CLI_
 https://github.com/GordonVi/win2s3/
 
 ![win2s3](http://virasawmi.com/gordon/images/win2s3.jpg)
@@ -7,15 +7,31 @@ https://github.com/GordonVi/win2s3/
 Win2S3 is a collection of Powershell scripts to make backing up and restoring files to Windows easy
 
 - Uses AWS CLI, icacls.exe, and Powershell
-- Doesn't require admin in backup
+- Doesn't require admin in backup or list
 - Works with proxies
+
+_Win2S3 operates in the same fashion as robocopy, rsync, and such. It's not a drive imager. It can't backup everything from the root._
 
 ## Features
 
 - Quick Backup using "AWS CLI s3 sync"
 - Backs up Windows File Permissions, Read Only attribute, Hidden Item flag, and file dates
 - Supports Point in Time Restore
+- Works with folders:
+```
+c:\Users\EndUser\Desktop
+c:\Users\EndUser\Pictures
+c:\Users\EndUser\Downloads
+```
 - No License, free to use for anything
+
+## Limits
+- Will not work with folders like:
+```
+c:\Users\EndUser
+```
+
+
 
 ## The Koan that got me to make this
 
