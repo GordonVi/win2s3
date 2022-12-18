@@ -123,13 +123,14 @@ _The "ListAllMyBuckets" permission is not a mistake. To find the right bucket, A
             "Effect": "Allow",
             "Action": [
                 "s3:DeleteObject",
-                "s3:DeleteBucketPolicy",
                 "s3:GetBucketLocation",
                 "s3:GetObject",
                 "s3:GetObjectAcl",
                 "s3:GetObjectVersion",
                 "s3:ListBucket",
+                "s3:ListBucketVersions",
                 "s3:ListBucketMultipartUploads",
+                "s3:ListObjectVersions",
                 "s3:PutObject",
                 "s3:PutObjectAcl"
             ],
