@@ -140,8 +140,7 @@ _The "ListAllMyBuckets" permission is not a mistake. To find the right bucket, A
                 "arn:aws:s3:::version-enabled-bucket",
                 "arn:aws:s3:::version-enabled-bucket/*",
                 "arn:aws:s3:::win2s3--*"
-            ],
-            "Condition": {}
+            ]
         },
         {
             "Effect": "Allow",
