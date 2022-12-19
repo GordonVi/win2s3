@@ -131,7 +131,7 @@ _The "ListAllMyBuckets" permission is not a mistake. To find the right bucket, A
     ]
 }
 ```
-
+-
   - Attach that Policy (permissions) to a Role
   - Attach that Role to a Group
   - Add your created user to that group OR attach the policy to your User
