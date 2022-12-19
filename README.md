@@ -28,9 +28,8 @@ c:\Users\EndUser\Downloads
 ```
 
 ## Limits
-- Will not work with folders like:
 - This script is provided "AS IS." There is no warrenty or guarentee with this software.
-
+- Will not work with folders like:
 ```
 c:\Users\EndUser
 ```
