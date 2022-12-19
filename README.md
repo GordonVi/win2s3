@@ -15,8 +15,8 @@ _Win2S3 operates in the same fashion as robocopy, rsync, and such. It's not a dr
 ## Features
 
 - Quick Backup using "AWS CLI s3 sync"
-- Backs up Windows File Permissions, Read Only attribute, Hidden Item flag, and file dates
-- Supports Point in Time Restore
+- Backs up Windows File Permissions, Read Only attribute, Hidden Item flag, and file dates. (Important to Windows)
+- Supports Point in Time Restore (Important for Ransomware restores and quick incremental backups)
 - Works though proxy / proxies like squid and McAfee Security through port 443. 
 - Command line commands can be used without the GUI. Great for Task Scheduler Jobs and adding into your own scripts.
 - No License, free to use for anything
@@ -32,23 +32,6 @@ c:\Users\EndUser\Downloads
 ```
 c:\Users\EndUser
 ```
-
-
-
-## The Koan that got me to make this
-
-_ChatGPT writes a koan about s3 backup and a lack of good backup clients for windows_
-
-> A wise Zen master once said, "The true value of a backup is not in its creation, but in its restoration."
-
-> One of the disciples asked, "But master, what if there are no good backup clients for our operating system?"
-
-> The Zen master replied, "Then you must become the backup client. You must take responsibility for your own data and ensure that it is properly backed up, even if it means creating your own solution."
-
-> The disciple was enlightened.
-
-Win2S3 was [born from my frustration of a lack of a simple and free backup client for Windows to S3.](https://old.reddit.com/r/aws/comments/yxy9cp/windows_server_backup_to_s3_via_proxy/) 
-
 
 ## Installation
 
@@ -169,3 +152,18 @@ aws s3 ls
 - To restore, you need to run powershell as an admin. The script will bring a user account control (UAC) dialogue asking for admin privledges. The restore fuction will not continue unless this is satisfied. This is for restoring file permissions using ICACLS.EXE in Windows.
 
 ## Now, you can run the script. It will see your bucket. Start with making your first backup.
+
+# The Koan that got me to make this
+
+_ChatGPT writes a koan about s3 backup and a lack of good backup clients for windows_
+
+> A wise Zen master once said, "The true value of a backup is not in its creation, but in its restoration."
+
+> One of the disciples asked, "But master, what if there are no good backup clients for our operating system?"
+
+> The Zen master replied, "Then you must become the backup client. You must take responsibility for your own data and ensure that it is properly backed up, even if it means creating your own solution."
+
+> The disciple was enlightened.
+
+Win2S3 was [born from my frustration of a lack of a simple and free backup client for Windows to S3.](https://old.reddit.com/r/aws/comments/yxy9cp/windows_server_backup_to_s3_via_proxy/) 
+
