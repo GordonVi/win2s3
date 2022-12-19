@@ -68,25 +68,23 @@ None
 # Give me a quick list of how to setup AWS S3 and this script from scratch
 
 - #### Sign up for AWS with a credit card at https://aws.amazon.com/resources/create-account/
-- Setup MFA (Multi Factor Authorization with Google Authenticator)
-- _Highly Recommended. Set up "AWS Budgets"_
+  - Setup MFA (Multi Factor Authorization with Google Authenticator)
+  - _Highly Recommended. Set up "AWS Budgets"_
 
 - #### Create a user
-- _Highly Recommended to name the user something like "service-win2s3"_
-- Create a Key / Secret for API access
+  - _Highly Recommended to name the user something like "service-win2s3"_
+  - Create a Key / Secret for API access
 
 - #### In AWS, go to the S3 Section
-- Create a bucket. 
+  - Create a bucket. 
 _I recommend having a common prefix for your backup buckets with 2 dashes. Like "win2s3--"_
-- Disable ACLs
-- Block all public access
-- Enable Bucket Versioning
-- Disable encryption. (I haven't worked that into this script. It is possible to do)
-- Advanced > Object Lock. You should enable this. This prevents a hacker from deleting your data if they get onto your PC and steal your AWS key/secret.
+  - Disable ACLs
+  - Block all public access
+  - Enable Bucket Versioning
+  - Disable encryption. (I haven't worked that into this script. It is possible to do)
+  - Advanced > Object Lock. You should enable this. This prevents a hacker from deleting your data if they get onto your PC and steal your AWS key/secret.
 
 - #### Create an IAM policy (permissions) with the policy template from above
-
-#### Create a policy
 
 ## In AWS > IAM > Policies.
 
@@ -134,22 +132,22 @@ _The "ListAllMyBuckets" permission is not a mistake. To find the right bucket, A
 }
 ```
 
-- Attach that Policy (permissions) to a Role
-- Attach that Role to a Group
-- Add your created user to that group OR attach the policy to your User
+  - Attach that Policy (permissions) to a Role
+  - Attach that Role to a Group
+  - Add your created user to that group OR attach the policy to your User
 
 - #### Install AWS CLI on your Windows PC
-- Open Powershell
-- Type "aws configure"
-- Enter your key/secret
-- Test if you can reach AWS by typing this into a powershell prompt:
+  - Open Powershell
+  - Type "aws configure"
+  - Enter your key/secret
+  - Test if you can reach AWS by typing this into a powershell prompt:
 ```
 aws s3 ls
 ```
 
 - #### Copy the script files to a folder into your computer
-- Right click and run "gui-win2s3.ps1"
-- To restore, you need to run powershell as an admin. The script will bring a user account control (UAC) dialogue asking for admin privledges. The restore fuction will not continue unless this is satisfied. This is for restoring file permissions using ICACLS.EXE in Windows.
+  - Right click and run "gui-win2s3.ps1"
+  - To restore, you need to run powershell as an admin. The script will bring a user account control (UAC) dialogue asking for admin privledges. The restore fuction will not continue unless this is satisfied. This is for restoring file permissions using ICACLS.EXE in Windows.
 
 ## Now, you can run the script. It will see your bucket. Start with making your first backup.
 
