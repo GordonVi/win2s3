@@ -28,7 +28,7 @@ c:\Users\EndUser\Downloads
 ```
 
 ## Limits
-- This script is provided "AS IS." There is no warrenty or guarentee with this software.
+- This script is provided "AS IS." There is no warrenty or guarantee with this software.
 - Will not work with folders like:
 ```
 c:\Users\EndUser
