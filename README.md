@@ -29,7 +29,7 @@ c:\Users\EndUser\Downloads
 
 ## Limits
 - This script is provided "AS IS." There is no warrenty or guarantee with this software.
-- Will not work with folders like:
+- Due to Windows file locking, this script will not work with folders like:
 ```
 c:\Users\EndUser
 ```
