@@ -28,8 +28,7 @@ c:\Users\EndUser\Downloads
 ```
 
 ## Limits
-- This script is provided "AS IS." There is no warrenty or guarantee with this software.
-- Due to Windows file locking, this script will not work with folders like:
+- Will not work with folders like:
 ```
 c:\Users\EndUser
 ```
@@ -60,12 +59,10 @@ Just 1 guy.
 
 ## License
 
-None
-
-**Free Software, Hell Yeah!**
-
-
-
+- None
+- This software uses software from another Github Repo
+  - https://github.com/Zerg00s/powershell-forms
+  
 # Give me a quick list of how to setup AWS S3 and this script from scratch
 
 - #### Sign up for AWS with a credit card at https://aws.amazon.com/resources/create-account/
@@ -148,8 +145,7 @@ aws s3 ls
 
 - #### Copy the script files to a folder into your computer
   - Right click and run "gui-win2s3.ps1"
-  - To restore, you need to run powershell as an admin. The script will bring a user account control (UAC) dialogue asking for admin privledges. The restore fuction will not continue unless this is satisfied. This is for restoring file permissions.  
-    - Note, In a corporate domain, I noticed you need to run "gui-win2s3.ps1" as an admin. Even if you have administrator on your domain profile. On Win 10 Home, it seems to work fine.
+  - To restore, you need to run powershell as an admin. The script will bring a user account control (UAC) dialogue asking for admin privledges. The restore fuction will not continue unless this is satisfied. This is for restoring file permissions using ICACLS.EXE in Windows.
 
 ## Now, you can run the script. It will see your bucket. Start with making your first backup.
 
