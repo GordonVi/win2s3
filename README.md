@@ -15,8 +15,9 @@ _Win2S3 operates in the same fashion as robocopy, rsync, and such. It's not a dr
 ## Features
 
 - Quick Backup using "AWS CLI s3 sync"
-- Multithreaded restore. Not as fast as backup, but it's not bad, either.
-- Backs up Windows File Permissions, Read Only attribute, Hidden Item flag, and file dates. (Important to Windows)
+- Multithreaded restore. Fast on corporate ISPs. Meh of FIOS Home Gigabit. 
+- Backs up Windows File Permissions, Read Only attribute, Hidden Item flag, and file dates. (AWS CLI s3 Sync doesn't to this)
+- Will remake empty folders (AWS CLI s3 Sync doesn't to this)
 - Supports Point in Time Restore (Important for Ransomware restores and quick incremental backups)
 - Works though proxy / proxies like squid and McAfee Security through port 443. 
 - Command line commands can be used without the GUI. Great for Task Scheduler Jobs and adding into your own scripts.
