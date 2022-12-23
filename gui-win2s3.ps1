@@ -6,10 +6,10 @@ clear
 
 . .\PS-Forms.ps1
 
-$list = @("Backup to S3 Bucket","List Backup Contents","Restore a Backup")
+$list = @("Backup to S3 Bucket","List Backup Contents","Restore a Backup (Requires Admin Privledges)")
 $temp = Get-FormArrayItem $list -dialogTitle "Select a function"
 
 
-if ($temp -eq "Backup to S3 Bucket") {.\gui-backup-win2s3.ps1}
-if ($temp -eq "List Backup Contents") {.\gui-list-win2s3.ps1}
-if ($temp -eq "Restore a Backup") {Start-Process powershell "-command `"cd `"$(pwd)`"; .\gui-restore-win2s3.ps1`"" -verb runas}
+if ($temp -eq $list[0]) {.\gui-backup-win2s3.ps1}
+if ($temp -eq $list[1]) {.\gui-list-win2s3.ps1}
+if ($temp -eq $list[2]) {Start-Process powershell "-command `"cd `"$(pwd)`"; .\gui-restore-win2s3.ps1`"" -verb runas}
