@@ -65,6 +65,7 @@ Just 1 guy.
 - None
 - This software uses software from another Github Repo
   - https://github.com/Zerg00s/powershell-forms
+    - Generates Radio Button Forms in Windows
   
 # Give me a quick list of how to setup AWS S3 and this script from scratch
 
