@@ -9,6 +9,10 @@ $temp =  Get-FormArrayItem $list -dialogTitle "Select the S3 Bucket to list from
 	
 	$bucket = $temp
 
+"
+
+         Bucket: $bucket"
+		 
 # Get Restore Points in bucket
 $restore_point_list = $($(aws s3api list-objects --bucket $bucket --prefix "metadata" --output json | convertfrom-json).contents | where {$_.Key -match "s3api_file_list.json"}).key.replace("metadata/","").replace("/s3api_file_list.json","")
 $list = $restore_point_list
@@ -16,7 +20,9 @@ $list = $restore_point_list
 $temp = Get-FormArrayItem $list -dialogTitle "Select the file system restore point to list from"
 		
 		$folder = $temp
-	
+
+"         Folder: $folder"
+
 # Get Points in Time in Restore Point
 $version_list = aws s3api list-object-versions --bucket $bucket --prefix "metadata/$folder/s3api_file_list.json" --output json | convertfrom-json
 
@@ -38,18 +44,11 @@ $version_list = aws s3api list-object-versions --bucket $bucket --prefix "metada
 	$temp = Get-FormArrayItem $list -dialogTitle "Select the point in time to list from"
 
 				
-				$point_in_time_date = $($list_translate | ? {$_.human -eq $temp}).UTC
+	$point_in_time_date = $($list_translate | ? {$_.human -eq $temp}).UTC
 		
+"  Point in time: $point_in_time_date"
 
 
-" 
-
-Bucket: $bucket
-Folder: $folder
-  PITR: $point_in_time_date
-  
-
-  "
 	
 	list-win2s3 $bucket $folder $point_in_time_date
 	

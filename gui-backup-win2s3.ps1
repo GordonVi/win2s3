@@ -14,6 +14,9 @@ $FolderBrowser.Description = "Select the local source folder to backup"
 
 if ($($FolderBrowser.SelectedPath) -eq "") {$fail_flag = 1}
 
+" 
+
+      Source: `"$($FolderBrowser.SelectedPath)`""
 
 
 if ($fail_flag -eq 0) {
@@ -21,13 +24,8 @@ if ($fail_flag -eq 0) {
 	# Get Buckets
 
 	$list = $(aws s3api list-buckets --output json | convertfrom-json).buckets.name
-	$temp = Get-FormArrayItem $list -dialogTitle "Select the S3 Bucket to backup to"
+	$bucket = Get-FormArrayItem $list -dialogTitle "Select the S3 Bucket to backup to"
 
-	if ($temp[0] -eq "yes") {
-		$bucket = $temp[1]
-		} else {$fail_flag = 1}
-	
-	
 
 	}
 
@@ -35,14 +33,8 @@ if ($fail_flag -eq 0) {
 
 if ($fail_flag -eq 0) {
 
-" 
-
-      Bucket: $bucket
-      Source: `"$($FolderBrowser.SelectedPath)`"
- Temp Folder: $temp_folder
-
-
-"
+"      Bucket: $bucket
+ Temp Folder: $temp_folder"
 
 backup-win2s3 $bucket $($FolderBrowser.SelectedPath) $temp_folder
 
