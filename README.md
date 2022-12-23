@@ -22,6 +22,7 @@ _Win2S3 operates in the same fashion as robocopy, rsync, and such. It's not a dr
 - Works though proxy / proxies like squid and McAfee Security through port 443. 
 - Command line commands can be used without the GUI. Great for Task Scheduler Jobs and adding into your own scripts.
 - No License, free to use for anything
+- Tested with Powershell 5 (Win10 Pro and Home) and Powershell 7 (Win10 Pro)
 - Works with folders:
 ```
 c:\Users\EndUser\Desktop
@@ -63,6 +64,7 @@ Just 1 guy.
 ## License
 
 - None
+- This script is provided AS IS. That means any damages that may happen because of use of this script are not the liability of the author.
 - This software uses software from another Github Repo
   - https://github.com/Zerg00s/powershell-forms
     - Generates Radio Button Forms in Windows
