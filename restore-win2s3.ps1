@@ -1,5 +1,7 @@
+. .\multithread_commands.ps1
+
 function restore-win2s3($bucket,$folder,$restore_target,$point_in_time_restore_date) {
-	
+
 
     $spot = $folder.split("/").length
 	$base_folder = $folder.split("/")[$spot-1] # the last folder in the bucket. This is important for the Win ACL restore
@@ -85,7 +87,7 @@ function restore-win2s3($bucket,$folder,$restore_target,$point_in_time_restore_d
 		
 
 			if ($temp -ne $file_to_write_dir) {
-				"md `"$file_to_write_dir`" -ErrorAction SilentlyContinue | out-null"
+				md $file_to_write_dir -ErrorAction SilentlyContinue | out-null
 				$temp = $file_to_write_dir # this is a post process cache. Check if the value was the same as te last iteration.
 
 			}
@@ -102,16 +104,9 @@ function restore-win2s3($bucket,$folder,$restore_target,$point_in_time_restore_d
 	
 		write-host -foregroundcolor cyan "Download Files" 
 	
-	foreach ($item in $restore_commands) {
-		
-		$counter=$counter+1
-		
-		"$counter / $total"
-		
-		invoke-expression $item
-		
-		
-	}
+	multithread_commands $restore_commands
+
+	$Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates 0 , 16
 	
 # --------------
 
@@ -169,15 +164,9 @@ function restore-win2s3($bucket,$folder,$restore_target,$point_in_time_restore_d
 	
 	write-host -foregroundcolor cyan "Download Metadata (File Permissions, Original Dates)" 
 	
-	foreach ($item in $restore_commands) {
-		
-		$counter=$counter+1
-		
-		"$counter / $total"
-		
-		invoke-expression $item
-		
-	}
+	multithread_commands $restore_commands
+	
+	$Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates 0 , 18
 
 # --------------
 

@@ -94,7 +94,12 @@ if ($fail_flag -eq 0) {
 
 if ($fail_flag -eq 0) {
 
-" 
+"
+
+
+
+
+
 
     Bucket: $bucket
     Folder: $folder
