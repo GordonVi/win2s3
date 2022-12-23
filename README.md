@@ -6,10 +6,6 @@ https://github.com/GordonVi/win2s3/
 
 Win2S3 is a collection of Powershell scripts to make backing up and restoring files to Windows easy
 
-- Uses AWS CLI, icacls.exe, and Powershell
-- Doesn't require admin in backup or list
-- Works with proxies
-
 _Win2S3 operates in the same fashion as robocopy, rsync, and such. It's not a drive imager. It can't backup everything from the root._
 
 ## Features
@@ -19,7 +15,7 @@ _Win2S3 operates in the same fashion as robocopy, rsync, and such. It's not a dr
 - Backs up Windows File Permissions, Read Only attribute, Hidden Item flag, and file dates. (AWS CLI s3 Sync doesn't to this)
 - Will remake empty folders (AWS CLI s3 Sync doesn't to this)
 - Supports Point in Time Restore (Important for Ransomware restores and quick incremental backups)
-- Works though proxy / proxies like squid and McAfee Security through port 443. 
+- Works though proxy / proxies like squid and McAfee Security through port 443. (via AWS CLI)
 - Command line commands can be used without the GUI. Great for Task Scheduler Jobs and adding into your own scripts.
 - No License, free to use for anything
 - Tested with Powershell 5 (Win10 Pro and Home) and Powershell 7 (Win10 Pro)
