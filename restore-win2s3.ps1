@@ -75,6 +75,8 @@ function restore-win2s3($bucket,$folder,$restore_target,$point_in_time_restore_d
 
 # ------------
 
+	$Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates 0 , 16
+
 	write-host -foregroundcolor cyan "Find Files from S3" 
 
 	$restore_commands = foreach ($item in $($combined | sort key | ? {$_.deletemarker -eq 0})) {
@@ -106,7 +108,7 @@ function restore-win2s3($bucket,$folder,$restore_target,$point_in_time_restore_d
 	
 	multithread_commands $restore_commands
 
-	$Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates 0 , 16
+	$Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates 0 , 18
 	
 # --------------
 
@@ -166,7 +168,7 @@ function restore-win2s3($bucket,$folder,$restore_target,$point_in_time_restore_d
 	
 	multithread_commands $restore_commands
 	
-	$Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates 0 , 18
+	$Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates 0 , 20
 
 # --------------
 

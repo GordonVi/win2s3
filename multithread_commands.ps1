@@ -3,7 +3,7 @@ function multithread_commands([string[]]$list) {
 	
 # --------------------------------------------------
 
-$threads = 100 # how many simultanious threads. I've tested up to 1000 ok against ~3600 local IPs, ~900 active.
+$threads = 50 # how many simultanious threads. I've tested up to 1000 ok against ~3600 local IPs, ~900 active.
 
 
 # --------------------------------------------------

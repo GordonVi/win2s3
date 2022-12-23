@@ -8,15 +8,18 @@ $temp_folder = "c:\temp\win2s3"
 
 # ------------------
 
+" 
+    Function: Backup"
+
+
 $FolderBrowser = New-Object System.Windows.Forms.FolderBrowserDialog
 $FolderBrowser.Description = "Select the local source folder to backup"
 [void]$FolderBrowser.ShowDialog()
 
 if ($($FolderBrowser.SelectedPath) -eq "") {$fail_flag = 1}
 
-" 
 
-      Source: `"$($FolderBrowser.SelectedPath)`""
+"      Source: `"$($FolderBrowser.SelectedPath)`""
 
 
 if ($fail_flag -eq 0) {

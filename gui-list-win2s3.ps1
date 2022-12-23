@@ -3,15 +3,18 @@
 
 # Get Buckets
 
+"
+       Function: List"
+
+
 $list = $(aws s3api list-buckets --output json | convertfrom-json).buckets.name
 $temp =  Get-FormArrayItem $list -dialogTitle "Select the S3 Bucket to list from"
 
 	
 	$bucket = $temp
 
-"
 
-         Bucket: $bucket"
+"         Bucket: $bucket"
 		 
 # Get Restore Points in bucket
 $restore_point_list = $($(aws s3api list-objects --bucket $bucket --prefix "metadata" --output json | convertfrom-json).contents | where {$_.Key -match "s3api_file_list.json"}).key.replace("metadata/","").replace("/s3api_file_list.json","")

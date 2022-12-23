@@ -38,24 +38,27 @@
 
 # ------------
 
-# Get Buckets
-$restore_target = "C:\temp\restore" # this is where you are dumping the restore data
+"
+
+
+
+
+
+
+      Function: Restore"
+
 $fail_flag=0
 
+# Get Buckets
 $list = $(aws s3api list-buckets --output json | convertfrom-json).buckets.name
-$temp = Get-FormArrayItem $list -dialogTitle "Select the S3 Bucket to restore from"
-
-	
-	$bucket = $temp
+$bucket = Get-FormArrayItem $list -dialogTitle "Select the S3 Bucket to restore from"
+"        Bucket: $bucket"
 
 # Get Restore Points in bucket
 $restore_point_list = $($(aws s3api list-objects --bucket $bucket --prefix "metadata" --output json | convertfrom-json).contents | where {$_.Key -match "s3api_file_list.json"}).key.replace("metadata/","").replace("/s3api_file_list.json","")
 $list = $restore_point_list
-
-$temp = Get-FormArrayItem $list -dialogTitle "Select the file system restore point to restore from"
-
-	
-	$folder = $temp
+$folder = Get-FormArrayItem $list -dialogTitle "Select the file system restore point to restore from"
+"        Folder: $folder"
 	
 # Get Points in Time in Restore Point
 $version_list = aws s3api list-object-versions --bucket $bucket --prefix "metadata/$folder/s3api_file_list.json" --output json | convertfrom-json
@@ -78,6 +81,7 @@ $list = $temp
 		
 			
 		$point_in_time_date = $($list_translate | ? {$_.human -eq $temp}).UTC
+" Point in Time: $point_in_time_date"
 		
 
 if ($fail_flag -eq 0) {
@@ -85,6 +89,7 @@ if ($fail_flag -eq 0) {
 		$FolderBrowser = New-Object System.Windows.Forms.FolderBrowserDialog
 		$FolderBrowser.Description = "Restore-Win2S3: Select the local destination to restore the backup to:"
 		[void]$FolderBrowser.ShowDialog()
+"    Extract to: `"$($FolderBrowser.SelectedPath)`""
 		
 		if ($($FolderBrowser.SelectedPath) -eq "") {$fail_flag = 1}
 
@@ -93,21 +98,6 @@ if ($fail_flag -eq 0) {
 
 
 if ($fail_flag -eq 0) {
-
-"
-
-
-
-
-
-
-    Bucket: $bucket
-    Folder: $folder
-      PITR: $point_in_time_date
-Extract to: `"$($FolderBrowser.SelectedPath)`"
-  
-
-  "
 
 	restore-win2s3 $bucket $folder $($FolderBrowser.SelectedPath) $point_in_time_date
 	
