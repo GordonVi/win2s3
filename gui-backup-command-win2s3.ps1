@@ -48,7 +48,7 @@ if ($fail_flag -eq 0) {
 		$form = New-Object System.Windows.Forms.Form
 
 		# Set the form's properties
-		$form.Text = "Copyable backup command"
+		$form.Text = "Copyable backup.ps1 command"
 		$form.Size = New-Object System.Drawing.Size($width, 200)
 		$form.StartPosition = "CenterScreen"
 
@@ -58,7 +58,7 @@ if ($fail_flag -eq 0) {
 		$textBox.ReadOnly = $true
 		$textBox.Location = New-Object System.Drawing.Point(10, 10)
 		$textBox.Size = New-Object System.Drawing.Size(($width - 40), 120)
-		$textBox.text = "powershell -command `". ```"$(pwd)\backup-win2s3.ps1```"; backup-win2s3 $bucket ```"$($FolderBrowser.SelectedPath)```" ```"$temp_folder```" `""
+		$textBox.text = ". `"$(pwd)\backup-win2s3.ps1`" `r`n`r`nbackup-win2s3 $bucket `"$($FolderBrowser.SelectedPath)`" `"$temp_folder`""
 
 		# Add the text field to the form
 		$form.Controls.Add($textBox)
