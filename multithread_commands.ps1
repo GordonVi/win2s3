@@ -14,7 +14,7 @@ $threads
 "    Build Pool: "
 "    Drain Pool: "
 " ---------------------"
-write-host "   Total Files: $($list.count)"
+write-host "   Total Files: $($list.count)    "
 
 
 # BLOCK 1: Create and open runspace pool, setup runspaces array with min and max threads
@@ -55,7 +55,7 @@ foreach ($command in $list) {
 
 	$Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates 16 , 2
 	$counter++
-	write-host "$counter " -nonewline
+	write-host "$counter  " -nonewline
 }
 
 # --------------------------------------------------
@@ -84,7 +84,7 @@ foreach ($runspace in $runspaces ) {
 	
 	$Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates 16 , 3
 	$counter++
-	write-host "$($total-$counter) " -nonewline
+	write-host "$($total-$counter)  " -nonewline
 
 }
     
