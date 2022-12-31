@@ -31,7 +31,7 @@ c:\Users\EndUser
 
 ## Installation
 
-Drop the files in a folder and run "gui-win2s3.ps1"
+Drop the files in a folder and run "start.bat"
 
 ## Plugins
 
