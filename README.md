@@ -8,6 +8,8 @@ Win2S3 is a collection of Powershell scripts to make backing up and restoring fi
 
 _Win2S3 operates in the same fashion as robocopy, rsync, and such. It's not a drive imager. It can't backup everything from the root._
 
+[![WIndows to S3 Backup Tool Demo](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://youtu.be/Sc-eFyEupJ0)
+
 ## Features
 
 - Quick Backup using "AWS CLI s3 sync"
