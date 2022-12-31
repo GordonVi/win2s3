@@ -63,9 +63,12 @@ Just 1 guy.
 
 - None
 - This script is provided AS IS. That means any damages that may happen because of use of this script are not the liability of the author.
-- This software uses software from another Github Repo
+- This software uses software from:
   - https://github.com/Zerg00s/powershell-forms
     - Generates Radio Button Forms in Windows
+  - The AWS CLI for Windows  
+  - The Windows icalcs.exe utility. (This is part of the Windows OS)
+  - Powershell 5 or 7
   
 # Give me a quick list of how to setup AWS S3 and this script from scratch
 
