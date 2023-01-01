@@ -20,7 +20,7 @@ _Win2S3 operates in the same fashion as robocopy, rsync, and such. It's not a dr
 - Works though proxy / proxies like squid and McAfee Security through port 443. (via AWS CLI)
 - Command line commands can be used without the GUI. Great for Task Scheduler Jobs and adding into your own scripts.
 - No License, free to use for anything
-- Tested with Powershell 5 (Win10 Pro and Home) and Powershell 5 (Win10 Pro)
+- Tested with Powershell 7 (Win10 Pro and Home) and Powershell 5 (Win10 Pro)
 
 ## Limits
 - Simple GUI. It's not bad, actually. But it could use some work.
