@@ -31,7 +31,10 @@ c:\Users\EndUser
 
 ## Installation
 
-Drop the files in a folder and run "start.bat"
+- Use the GIT CLI to download
+    git clone https://github.com/GordonVi/win2s3
+    
+- Run "start.bat"
 
 ## Plugins
 
