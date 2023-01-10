@@ -150,7 +150,7 @@ aws s3 ls
 ```
 
 - #### Copy the script files to a folder into your computer
-  - Right click and run "gui-win2s3.ps1"
+  - Run "start.bat"
   - To restore, you need to run powershell as an admin. The script will bring a user account control (UAC) dialogue asking for admin privledges. The restore fuction will not continue unless this is satisfied. This is for restoring file permissions using ICACLS.EXE in Windows.
 
 ## Now, you can run the script. It will see your bucket. Start with making your first backup.
