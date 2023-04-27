@@ -1,5 +1,5 @@
 # Win2S3
-## _A Powershell frontend for backup and restore to S3 using the AWS CLI_
+## _A Powershell frontend for backup and restore to S3 using the AWS CLI._
 https://github.com/GordonVi/win2s3/
 
 ![win2s3](http://virasawmi.com/gordon/images/win2s3.jpg)
